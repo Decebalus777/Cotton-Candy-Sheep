@@ -1,34 +1,43 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    //instances to change based off of custom preference
     public int movementSpeed = 10;
-    public int destroyTime = 30;
+    public float duration = 20;
 
-    //public for debugging purposes
-    public GameObject currentCloak;
-    public GameObject potentialCloak;
-    public GameObject pickedUpCloak;
-    public GameObject toUseCloak;
-    public bool pickup = false;
-    
+    #region Non-Public Variables
+    GameObject potentialCloak;
+    GameObject pickedUpCloak;
+    GameObject toUseCloak;
+
+    bool pickup = false;
+    bool matChange = false;
+
+    Color startColor;
+    Color endColor;
 
     //placeholder materials
     Material baseMaterial;
     Material potentialMaterial;
     Material pickedupMaterial;
+
+    #endregion
     // Start is called before the first frame update
     void Start()
     {
-        baseMaterial = gameObject.GetComponent<MeshRenderer>().material;
+        baseMaterial = GetComponent<Renderer>().material;
+        endColor = baseMaterial.color;
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+        MaterialCountDown();
     }
 
     public void Movement()
@@ -65,14 +74,13 @@ public class PlayerController : MonoBehaviour
     {
         if(pickedupMaterial != null)
         {
-            currentCloak = pickedUpCloak;
             Destroy(toUseCloak);
             pickedUpCloak = null;
-            gameObject.GetComponent<MeshRenderer>().material = pickedupMaterial;
+            GetComponent<Renderer>().material = pickedupMaterial;
+            startColor = pickedupMaterial.color;
             pickedupMaterial = null;
-        }
-
-        StartCoroutine(WaitThenDie());
+            matChange = true;
+        }      
     }
 
     //Grabs which ever cloak player is hovering over
@@ -106,11 +114,43 @@ public class PlayerController : MonoBehaviour
         }
         pickup = false;
     }
-    //timer for when materials change
-    IEnumerator WaitThenDie()
+
+    void MaterialCountDown()
     {
-        yield return new WaitForSeconds(destroyTime);
-        gameObject.GetComponent<Renderer>().material = baseMaterial;
+        if(matChange)
+        {
+            if (duration > 0)
+                duration -= Time.deltaTime;
+
+             StartFlashingMaterial();
+            
+            if(duration <= 0)
+            {
+                GetComponent<Renderer>().material.color = endColor;
+                matChange = false;
+                duration = 20;
+            }
+                
+        }
+    }
+
+    void StartFlashingMaterial()
+    {
+
+        if (duration < 15.0f && duration > 10.0f)
+        {
+            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1.5f));
+        }
+
+        if (duration < 10.0f && duration > 5.0f)
+        {
+            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1f));
+        }
+        if (duration < 5.0f && duration > 0.0f)
+        {
+
+            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 0.5f));
+        }
     }
 
     //Checks for any Cloaks player advances to

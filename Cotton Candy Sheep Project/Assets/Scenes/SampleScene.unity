@@ -37274,12 +37274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  destroyTime: 10
-  currentCloak: {fileID: 0}
-  potentialCloak: {fileID: 0}
-  pickedUpCloak: {fileID: 0}
-  toUseCloak: {fileID: 0}
-  pickup: 0
+  duration: 20
 --- !u!54 &8171945744320034679
 Rigidbody:
   m_ObjectHideFlags: 0
