@@ -9627,6 +9627,7 @@ GameObject:
   - component: {fileID: 634283058}
   - component: {fileID: 634283057}
   - component: {fileID: 634283056}
+  - component: {fileID: 634283060}
   m_Layer: 0
   m_Name: Red_Cloak
   m_TagString: Pickup
@@ -9710,6 +9711,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &634283060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634283055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80683a9348bec0545855204dd4868330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedUp: 0
 --- !u!1001 &640801584
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13184,6 +13198,7 @@ GameObject:
   - component: {fileID: 840462415}
   - component: {fileID: 840462414}
   - component: {fileID: 840462413}
+  - component: {fileID: 840462417}
   m_Layer: 0
   m_Name: Blue_Cloak
   m_TagString: Pickup
@@ -13267,6 +13282,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &840462417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840462412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80683a9348bec0545855204dd4868330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickedUp: 0
 --- !u!1001 &842299100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37246,8 +37274,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  destroyTime: 10
   currentCloak: {fileID: 0}
   potentialCloak: {fileID: 0}
+  pickedUpCloak: {fileID: 0}
+  toUseCloak: {fileID: 0}
   pickup: 0
 --- !u!54 &8171945744320034679
 Rigidbody:
