@@ -67,6 +67,12 @@ public class PlayerController : MonoBehaviour
         {
             UseItem();
         }
+        if(Input.GetKey("l"))
+        {
+            matChange = false;
+            duration = 20;
+            GetComponent<Renderer>().material.color = endColor;
+        }
     }
 
     //Takes the picked up cloak and sets it to the current cloak of player
@@ -115,6 +121,7 @@ public class PlayerController : MonoBehaviour
         pickup = false;
     }
 
+
     void MaterialCountDown()
     {
         if(matChange)
@@ -134,6 +141,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /*
+     * Slowly increase the speed at which the color flashes indicating the cloak is about to run out
+     */
     void StartFlashingMaterial()
     {
 
