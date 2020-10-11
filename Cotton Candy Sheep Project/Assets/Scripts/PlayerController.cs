@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
                     {
                         sheep.GetComponent<SheepController>().followingWolf = false;
                     }
+            GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = false;
         }
     }
 
@@ -157,6 +158,7 @@ public class PlayerController : MonoBehaviour
                     {
                         sheep.GetComponent<SheepController>().followingWolf = false;
                     }
+                GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = false;
             }  
         }
     }
@@ -193,10 +195,12 @@ public class PlayerController : MonoBehaviour
                 if (this.GetComponent<Renderer>().material.name.Contains(sheep.GetComponent<Renderer>().materials[1].name))
                 {
                     followingSheep.Add(sheep);
+                    GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = true;
                     sheep.GetComponent<SheepController>().followingWolf = true;
                 } 
                 else
                 {
+                    //GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = false;
                     sheep.GetComponent<SheepController>().followingWolf = false;
                 }
                     

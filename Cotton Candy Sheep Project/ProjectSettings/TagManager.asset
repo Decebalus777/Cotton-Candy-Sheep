@@ -7,6 +7,7 @@ TagManager:
   - Pickup
   - Sheep
   - Environment
+  - BlackSheep
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepController : MonoBehaviour
+public class BlackSheepController : MonoBehaviour
 {
     public float speed;
     public Transform wolf;
@@ -40,4 +39,6 @@ public class SheepController : MonoBehaviour
         direction.Normalize();
         movement = direction;
     }
+
+
 }

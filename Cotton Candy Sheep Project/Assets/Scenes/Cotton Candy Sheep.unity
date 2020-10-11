@@ -17598,13 +17598,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 228985853}
     m_Modifications:
-    - target: {fileID: -3666220090383606751, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
+    - target: {fileID: -5613611130600994734, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
       propertyPath: wolf
       value: 
       objectReference: {fileID: 932455821}
     - target: {fileID: 7385303532485371340, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
       propertyPath: m_Name
       value: Black_Sheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385303532485371340, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
+      propertyPath: m_TagString
+      value: BlackSheep
       objectReference: {fileID: 0}
     - target: {fileID: 7869493632083574646, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
       propertyPath: m_LocalPosition.x
