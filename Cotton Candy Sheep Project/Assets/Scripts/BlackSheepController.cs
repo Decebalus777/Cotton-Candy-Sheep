@@ -20,12 +20,15 @@ public class BlackSheepController : MonoBehaviour
     {
         if (followingWolf)
             FollowWolf();
+        else
+            RunFromWolf();
     }
 
     void FixedUpdate()
     {
         if (followingWolf)
             MoveSheep(movement);
+        
     }
 
     private void MoveSheep(Vector3 direction)
@@ -42,5 +45,12 @@ public class BlackSheepController : MonoBehaviour
         movement = direction;
     }
 
-
+    void RunFromWolf()
+    {
+        Vector3 direction = transform.position - wolf.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(0, angle, 0);
+        direction.Normalize();
+        movement = direction;
+    }
 }
