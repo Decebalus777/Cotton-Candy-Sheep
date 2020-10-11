@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     //instances to change based off of custom preference
     public int movementSpeed = 10;
     public float duration = 20;
+    public Material[] cloaks;
+    public List<GameObject> followingSheep;
 
     #region Non-Public Variables
     GameObject potentialCloak;
@@ -21,9 +23,9 @@ public class PlayerController : MonoBehaviour
     Color endColor;
 
     //placeholder materials
-    Material baseMaterial;
-    Material potentialMaterial;
-    Material pickedupMaterial;
+     Material baseMaterial; //Do not change
+     public Material potentialMaterial;
+     public Material pickedupMaterial;
 
     #endregion
     // Start is called before the first frame update
@@ -36,8 +38,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Color of Wolf is: " + GetComponent<Renderer>().material.name);
         Movement();
         MaterialCountDown();
+    }
+
+    void FixedUpdate()
+    {
+        LureSheep();
     }
 
     public void Movement()
@@ -69,9 +77,14 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKey("l"))
         {
-            matChange = false;
-            duration = 20;
-            GetComponent<Renderer>().material.color = endColor;
+            GetComponent<Renderer>().material = baseMaterial;
+                matChange = false;
+                duration = 20;
+                if(followingSheep.Capacity != 0)
+                    foreach(GameObject sheep in followingSheep)
+                    {
+                        sheep.GetComponent<SheepController>().followingWolf = false;
+                    }
         }
     }
 
@@ -80,6 +93,7 @@ public class PlayerController : MonoBehaviour
     {
         if(pickedupMaterial != null)
         {
+            duration = 20;
             Destroy(toUseCloak);
             pickedUpCloak = null;
             GetComponent<Renderer>().material = pickedupMaterial;
@@ -121,7 +135,7 @@ public class PlayerController : MonoBehaviour
         pickup = false;
     }
 
-
+    //slowly returns color back to base
     void MaterialCountDown()
     {
         if(matChange)
@@ -133,9 +147,14 @@ public class PlayerController : MonoBehaviour
             
             if(duration <= 0)
             {
-                GetComponent<Renderer>().material.color = endColor;
+                GetComponent<Renderer>().material = baseMaterial;
                 matChange = false;
                 duration = 20;
+                if(followingSheep.Capacity != 0)
+                    foreach(GameObject sheep in followingSheep)
+                    {
+                        sheep.GetComponent<SheepController>().followingWolf = false;
+                    }
             }
                 
         }
@@ -163,14 +182,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void LureSheep()
+    {
+        if(!GetComponent<Renderer>().material.name.Equals("Grey (Instance)"))
+        {
+            foreach (GameObject sheep in GameObject.FindGameObjectsWithTag("Sheep"))
+            {
+                if (this.GetComponent<Renderer>().material.name.Contains(sheep.GetComponent<Renderer>().materials[1].name))
+                {
+                    followingSheep.Add(sheep);
+                    sheep.GetComponent<SheepController>().followingWolf = true;
+                } 
+                else
+                {
+                    sheep.GetComponent<SheepController>().followingWolf = false;
+                }
+                    
+            }
+        }
+    }
     //Checks for any Cloaks player advances to
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Pickup")
         {
             pickup = true;
-            potentialCloak = other.gameObject;
-            potentialMaterial = other.gameObject.GetComponent<MeshRenderer>().material;
+            for(int i = 0; i < cloaks.Length; i++)
+            {
+                //to check if the cloak is in the list of cloaks that can be picked up
+                if(other.gameObject.GetComponent<Renderer>().material.name.Contains(cloaks[i].name))
+                {
+                    potentialCloak = other.gameObject;
+                    potentialMaterial = cloaks[i];
+                }
+            }
+            
         }   
     }
 

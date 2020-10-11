@@ -16,6 +16,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7530730805589775000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385303532485371340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57232628c4ba2e54c8794ce92db142b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  wolf: {fileID: 1399728857987515381, guid: 8fe74bd7bf241414ea39565ef5ad1d3f, type: 3}
+  followingWolf: 0
 --- !u!1001 &7691224294209575069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +88,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f0744b290cfbdb743826ac052fcbb1f3, type: 2}
     - target: {fileID: 919132149155446097, guid: faf0db0ef5eb4a144b0aec82c24b5281, type: 3}
       propertyPath: m_Name
-      value: Red_Sheep 4
+      value: Yellow_Sheep
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: faf0db0ef5eb4a144b0aec82c24b5281, type: 3}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: faf0db0ef5eb4a144b0aec82c24b5281, type: 3}
