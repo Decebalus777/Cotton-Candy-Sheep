@@ -14,6 +14,7 @@ public class SheepController : MonoBehaviour
     private Vector3 movement;
     public bool followingWolf = false;
     public bool blackSheepNearby = false;
+    public bool captured = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,33 +27,33 @@ public class SheepController : MonoBehaviour
 
         var distWolf = Vector3.Distance(transform.position, wolf.position);
 
-        if (distWolf < wolfDistance)
+        if (distWolf < wolfDistance && !captured)
             RunFromWolf();
 
-        if (followingWolf)
+        if (followingWolf && !captured)
             FollowWolf();
 
         var distSheep = Vector3.Distance(transform.position, blackSheep.position);
-        if (distSheep < blackSheepDistance && followingWolf)
+        if (distSheep < blackSheepDistance && followingWolf && !captured)
         {
             followingWolf = false;
             blackSheepNearby = true;
         }
-        else if (distSheep == blackSheepDistance)
+        else if (distSheep == blackSheepDistance && !captured)
         {
             followingWolf = false;
         }
         else
             blackSheepNearby = false;
 
-        if (blackSheepNearby)
+        if (blackSheepNearby && !captured)
             RunFromBlackSheep();         
     }
 
     //for physics stuff
     void FixedUpdate()
     {
-        if (followingWolf)
+        if (followingWolf && !captured)
             MoveSheep(movement);       
     }
     
