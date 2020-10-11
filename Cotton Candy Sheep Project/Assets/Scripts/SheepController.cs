@@ -39,6 +39,8 @@ public class SheepController : MonoBehaviour
     void FollowWolf()
     {
         Vector3 direction = wolf.position - transform.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(0,angle,0);
         direction.Normalize();
         movement = direction;
     }
