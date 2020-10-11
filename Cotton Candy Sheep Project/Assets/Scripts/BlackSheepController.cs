@@ -5,10 +5,12 @@ using UnityEngine;
 public class BlackSheepController : MonoBehaviour
 {
     public float speed;
+    public float wolfDistance;
     public Transform wolf;
     private Rigidbody rb;
     private Vector3 movement;
     public bool followingWolf = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +20,19 @@ public class BlackSheepController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var distWolf = Vector3.Distance(transform.position, wolf.position);
+
+        if (distWolf < wolfDistance)
+            RunFromWolf();
+
         if (followingWolf)
             FollowWolf();
-        else
-            RunFromWolf();
     }
 
     void FixedUpdate()
     {
         if (followingWolf)
             MoveSheep(movement);
-        
     }
 
     private void MoveSheep(Vector3 direction)

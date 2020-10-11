@@ -29,7 +29,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  wolfDistance: 10
+  blackSheepDistance: 10
   wolf: {fileID: 1399728857987515381, guid: 8fe74bd7bf241414ea39565ef5ad1d3f, type: 3}
+  blackSheep: {fileID: 7869493632083574646, guid: 5e2eb634f88165b478a8f180ac9fa6c2, type: 3}
   followingWolf: 0
 --- !u!1001 &7691224294209575069
 PrefabInstance:

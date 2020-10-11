@@ -6,11 +6,14 @@ using UnityEngine;
 public class SheepController : MonoBehaviour
 {
     public float speed;
+    public float wolfDistance;
+    public float blackSheepDistance;
     public Transform wolf;
     public Transform blackSheep;
     private Rigidbody rb;
     private Vector3 movement;
     public bool followingWolf = false;
+    public bool blackSheepNearby = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,25 +23,46 @@ public class SheepController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        var distWolf = Vector3.Distance(transform.position, wolf.position);
+
+        if (distWolf < wolfDistance)
+            RunFromWolf();
+
         if (followingWolf)
             FollowWolf();
 
+        var distSheep = Vector3.Distance(transform.position, blackSheep.position);
+        if (distSheep < blackSheepDistance && followingWolf)
+        {
+            followingWolf = false;
+            blackSheepNearby = true;
+        }
+        else if (distSheep == blackSheepDistance)
+        {
+            followingWolf = false;
+        }
         else
-            RunFromWolf();
+            blackSheepNearby = false;
+
+        if (blackSheepNearby)
+            RunFromBlackSheep();         
     }
+
     //for physics stuff
     void FixedUpdate()
     {
         if (followingWolf)
-            MoveSheep(movement);
-        CheckForBlackSheep();
+            MoveSheep(movement);       
     }
-
+    
+    //helper method to move sheep 
     private void MoveSheep(Vector3 direction)
     {
         rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
     }
 
+    //if there is a cloak, follow
     void FollowWolf()
     {
         Vector3 direction = wolf.position - transform.position;
@@ -48,6 +72,7 @@ public class SheepController : MonoBehaviour
         movement = direction;
     }
 
+    //if no cloak, run from wolf
     void RunFromWolf()
     {
         Vector3 direction = transform.position - wolf.position;
@@ -58,8 +83,12 @@ public class SheepController : MonoBehaviour
     }
 
     //If black sheep is near by, runaway
-    void CheckForBlackSheep()
+    void RunFromBlackSheep()
     {
-
+        Vector3 direction = transform.position - blackSheep.position;
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(0, angle, 0);
+        direction.Normalize();
+        movement = direction;
     }
 }
