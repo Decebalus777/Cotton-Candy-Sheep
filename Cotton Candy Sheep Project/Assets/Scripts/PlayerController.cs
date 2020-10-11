@@ -9,13 +9,15 @@ public class PlayerController : MonoBehaviour
     public int movementSpeed = 10;
     public float duration = 20;
 
+    // Needed public for Sheep AI
+    public bool matChange = false;
+
     #region Non-Public Variables
     GameObject potentialCloak;
     GameObject pickedUpCloak;
     GameObject toUseCloak;
 
     bool pickup = false;
-    bool matChange = false;
 
     Color startColor;
     Color endColor;
