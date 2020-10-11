@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
     public Material[] cloaks;
     public List<GameObject> followingSheep;
 
+    // Needed public for Sheep AI
+    public bool matChange = false;
+
     #region Non-Public Variables
     GameObject potentialCloak;
     GameObject pickedUpCloak;
     GameObject toUseCloak;
 
     bool pickup = false;
-    bool matChange = false;
 
     Color startColor;
     Color endColor;
@@ -155,8 +157,7 @@ public class PlayerController : MonoBehaviour
                     {
                         sheep.GetComponent<SheepController>().followingWolf = false;
                     }
-            }
-                
+            }  
         }
     }
 
