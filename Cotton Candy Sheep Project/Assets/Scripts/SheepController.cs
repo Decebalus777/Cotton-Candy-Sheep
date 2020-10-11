@@ -7,6 +7,7 @@ public class SheepController : MonoBehaviour
 {
     public float speed;
     public Transform wolf;
+    public Transform blackSheep;
     private Rigidbody rb;
     private Vector3 movement;
     public bool followingWolf = false;
@@ -22,11 +23,12 @@ public class SheepController : MonoBehaviour
         if (followingWolf)
             FollowWolf();
     }
-
+    //for physics stuff
     void FixedUpdate()
     {
         if (followingWolf)
             MoveSheep(movement);
+        CheckForBlackSheep();
     }
 
     private void MoveSheep(Vector3 direction)
@@ -39,5 +41,11 @@ public class SheepController : MonoBehaviour
         Vector3 direction = wolf.position - transform.position;
         direction.Normalize();
         movement = direction;
+    }
+
+    //If black sheep is near by, runaway
+    void CheckForBlackSheep()
+    {
+
     }
 }
