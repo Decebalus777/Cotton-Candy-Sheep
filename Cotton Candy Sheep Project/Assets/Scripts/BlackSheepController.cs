@@ -10,7 +10,7 @@ public class BlackSheepController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 movement;
     public bool followingWolf = false;
-
+    public bool captured = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,16 +22,16 @@ public class BlackSheepController : MonoBehaviour
     {
         var distWolf = Vector3.Distance(transform.position, wolf.position);
 
-        if (distWolf < wolfDistance)
+        if (distWolf < wolfDistance && !captured)
             RunFromWolf();
 
-        if (followingWolf)
+        if (followingWolf && !captured)
             FollowWolf();
     }
 
     void FixedUpdate()
     {
-        if (followingWolf)
+        if (followingWolf && !captured)
             MoveSheep(movement);
     }
 
