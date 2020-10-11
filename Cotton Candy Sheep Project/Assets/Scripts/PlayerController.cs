@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Color of Wolf is: " + GetComponent<Renderer>().material.name);
+        //Debug.Log("Color of Wolf is: " + GetComponent<Renderer>().material.name);
         Movement();
         MaterialCountDown();
     }
@@ -189,6 +189,7 @@ public class PlayerController : MonoBehaviour
         {
             foreach (GameObject sheep in GameObject.FindGameObjectsWithTag("Sheep"))
             {
+                //Debug.Log("Sheep Color is: " + sheep.GetComponent<Renderer>().materials[1].name);
                 if (this.GetComponent<Renderer>().material.name.Contains(sheep.GetComponent<Renderer>().materials[1].name))
                 {
                     followingSheep.Add(sheep);
