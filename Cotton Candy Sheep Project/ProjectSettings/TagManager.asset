@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - BlackSheep
   - Cloak
+  - UI
   layers:
   - Default
   - TransparentFX
