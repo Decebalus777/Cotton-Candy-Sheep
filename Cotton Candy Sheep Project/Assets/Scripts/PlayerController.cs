@@ -57,19 +57,24 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey("w"))
         {
+            
             transform.position += Vector3.forward * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward.normalized), 0.2f);
         }
         if (Input.GetKey("a"))
         {
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left.normalized), 0.2f);
         }
         if (Input.GetKey("s"))
         {
             transform.position += Vector3.back * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back.normalized), 0.2f);
         }
         if (Input.GetKey("d"))
         {
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), 0.2f);
         }
         if(Input.GetKeyDown("j"))
         {
