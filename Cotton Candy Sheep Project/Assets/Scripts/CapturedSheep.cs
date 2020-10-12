@@ -8,6 +8,9 @@ public class CapturedSheep : MonoBehaviour
 {
     public int sheepInGame;
     public int capturedSheepCount;
+    public GameObject winUI;
+
+    public GameObject loseUI;
     List<GameObject> sheepList;
     List<GameObject> capturedSheepList;
 
@@ -33,7 +36,7 @@ public class CapturedSheep : MonoBehaviour
             foreach (GameObject sheep in capturedSheepList)
             {
                 if (sheep.CompareTag("BlackSheep") && capturedSheepCount != sheepList.Capacity - 1)
-                    Debug.LogError("BLACK SHEEP ENTERED DEN BEFORE ALL OTHER SHEEP ARE CAPTURED - PLAYER LOST");
+                    loseUI.SetActive(true);
             }
         }
         else
@@ -46,8 +49,8 @@ public class CapturedSheep : MonoBehaviour
                     win = false;
 
             }
-           if(win)
-                Debug.LogError("BLACK SHEEP ENTERED DEN, ALL OTHER SHEEP ARE CAPTURED - PLAYER WINS");
+            if (win && !loseUI.activeSelf)
+                winUI.SetActive(true);
         }
         
     }
@@ -75,15 +78,5 @@ public class CapturedSheep : MonoBehaviour
             capturedSheepCount++;
         }
         */
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log(other.gameObject.name + " has Exited the Den.");
-        if (other.gameObject.CompareTag("Sheep"))
-        {
-            other.gameObject.GetComponent<SheepController>().captured = false;
-            capturedSheepList.Remove(other.gameObject);
-            capturedSheepCount--;
-        }
     }
 }
