@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartButton : MonoBehaviour
+public class QuitButton : MonoBehaviour
 {
 	public Button yourButton;
-
 	void Start()
 	{
 		Button btn = yourButton.GetComponent<Button>();
@@ -15,12 +14,12 @@ public class StartButton : MonoBehaviour
 
 	void TaskOnClick()
 	{
-		Application.LoadLevel(1);
+		Application.Quit();
 	}
 
 	// Update is called once per frame
 	void Update()
-	{
-
-	}
+    {
+        
+    }
 }
