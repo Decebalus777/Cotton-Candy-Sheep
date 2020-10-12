@@ -6521,6 +6521,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 138111280793038450, guid: 028114b58f27d9e45904289918445036, type: 3}
+      propertyPath: runFromWolf
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: 028114b58f27d9e45904289918445036, type: 3}
       propertyPath: m_Name
       value: Orange_Sheep
@@ -8966,6 +8970,10 @@ PrefabInstance:
     - target: {fileID: 7530730805589775000, guid: baa17b845abf09d44aedd5f093831977, type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7530730805589775000, guid: baa17b845abf09d44aedd5f093831977, type: 3}
+      propertyPath: runFromWolf
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7869493632083574646, guid: baa17b845abf09d44aedd5f093831977, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25759,6 +25767,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -5024251591290289928, guid: 1b2919764b018d6449851f4e97fb757d, type: 3}
+      propertyPath: runFromWolf
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: 1b2919764b018d6449851f4e97fb757d, type: 3}
       propertyPath: m_Name
       value: Green_Sheep
@@ -31827,6 +31839,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: -2923135884584403113, guid: c50ddb4f191394349aee51c35f12f2d6, type: 3}
+      propertyPath: runFromWolf
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: c50ddb4f191394349aee51c35f12f2d6, type: 3}
       propertyPath: m_Name
       value: White_Sheep
@@ -34967,6 +34983,10 @@ PrefabInstance:
     - target: {fileID: 5812327872480809770, guid: d7b2a82bdf02dc14bbc70d1c003faa6b, type: 3}
       propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812327872480809770, guid: d7b2a82bdf02dc14bbc70d1c003faa6b, type: 3}
+      propertyPath: runFromWolf
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: d7b2a82bdf02dc14bbc70d1c003faa6b, type: 3}
       propertyPath: m_Name
@@ -38175,6 +38195,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5586422506157115975, guid: 67a91b87a056c3a4a9ea5f168d01d14b, type: 3}
+      propertyPath: runFromWolf
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: 67a91b87a056c3a4a9ea5f168d01d14b, type: 3}
       propertyPath: m_Name
       value: Blue_Sheep
@@ -38903,6 +38927,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3977110675522285510, guid: d67a04bc8af07744c8e8c963d246298a, type: 3}
+      propertyPath: runFromWolf
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7385303532485371340, guid: d67a04bc8af07744c8e8c963d246298a, type: 3}
       propertyPath: m_Name
       value: Purple_Sheep
@@ -39317,7 +39345,7 @@ GameObject:
   - component: {fileID: 2040534728}
   m_Layer: 0
   m_Name: finalWolf
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
