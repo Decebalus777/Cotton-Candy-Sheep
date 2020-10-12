@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 8218ce2730e24ea4fb4300051ed0c26f
+
+guid: 09e16cf2483c10042825fbddc0271f79
+
+guid: d6406919af8b5414fb785f993a238538
+
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
@@ -41,7 +45,7 @@ ModelImporter:
     sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
+    importCameras: 1
     importLights: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -66,7 +70,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
