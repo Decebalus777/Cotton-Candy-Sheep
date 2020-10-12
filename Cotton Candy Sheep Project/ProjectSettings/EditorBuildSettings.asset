@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MENU ACTUAL.unity
     guid: 3fcf89ba4e7ac441ea5bb2b8273d6f32
   - enabled: 1
-    path: Assets/Scenes/Cotton Candy Sheep V3.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Cotton Candy Sheep V2.unity
+    guid: bf27999f0dc8c23449d6bef8cc749e4f
   m_configObjects: {}
