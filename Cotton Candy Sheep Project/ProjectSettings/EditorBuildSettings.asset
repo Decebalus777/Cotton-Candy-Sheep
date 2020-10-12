@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MENU ACTUAL.unity
+    guid: 3fcf89ba4e7ac441ea5bb2b8273d6f32
+  - enabled: 1
     path: Assets/Scenes/Cotton Candy Sheep V3.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
