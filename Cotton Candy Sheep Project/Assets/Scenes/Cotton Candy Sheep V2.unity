@@ -2476,7 +2476,7 @@ Terrain:
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
+  m_MaterialTemplate: {fileID: 2100000, guid: 01af08e5c9c5ff447baf857a42de019d, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -37212,14 +37212,14 @@ MonoBehaviour:
   movementSpeed: 10
   duration: 20
   cloaks:
-  - {fileID: 2100000, guid: 890c3a3a08be05a40b260d626976575e, type: 2}
-  - {fileID: 2100000, guid: f0744b290cfbdb743826ac052fcbb1f3, type: 2}
-  - {fileID: 2100000, guid: bb9bcea492ba1ae4c97ce65c73c66542, type: 2}
-  - {fileID: 2100000, guid: 1f89975a5ac0ed041ac9508694618f86, type: 2}
-  - {fileID: 2100000, guid: 3144e4eb6f173594da769f33aaaedd81, type: 2}
-  - {fileID: 2100000, guid: cc9d4704d221afc48ab5c425f8aa9f6e, type: 2}
-  - {fileID: 2100000, guid: cee3997114dec5545bf5c0a843ec1a5c, type: 2}
-  - {fileID: 2100000, guid: 7ac8dd5b573c84944a8e42a250dbebf8, type: 2}
+  - {fileID: 2100000, guid: 8604580ae7fad194985f0b3064888c3c, type: 2}
+  - {fileID: 2100000, guid: 09c3ecd4d6496fd479e6eb7b9a98bc21, type: 2}
+  - {fileID: 2100000, guid: 47cc2a6de34b4aa4caff32d01955af37, type: 2}
+  - {fileID: 2100000, guid: d7d86ba0aedd5ef4889431809162d058, type: 2}
+  - {fileID: 2100000, guid: 8362058900b2cda4ba5a8a87c6001a8f, type: 2}
+  - {fileID: 2100000, guid: 6c89931926126fe4cb5870f20bcdc3a1, type: 2}
+  - {fileID: 2100000, guid: 2a2c58232b2b9524e8866f143a62e488, type: 2}
+  - {fileID: 2100000, guid: a507c34c07f04a0429b0f4cb082d725e, type: 2}
   followingSheep: []
   matChange: 0
   potentialMaterial: {fileID: 0}
