@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     //instances to change based off of custom preference
     public int movementSpeed = 10;
     public float duration = 20;
+    public GameObject cloak;
+    public GameObject costume;
     public Material[] cloaks;
     public List<GameObject> followingSheep;
 
@@ -33,7 +35,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        baseMaterial = GetComponent<Renderer>().material;
+        baseMaterial = costume.GetComponent<Renderer>().material;
         endColor = baseMaterial.color;
     }
 
@@ -55,19 +57,24 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKey("w"))
         {
+            
             transform.position += Vector3.forward * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward.normalized), 0.2f);
         }
         if (Input.GetKey("a"))
         {
             transform.position += Vector3.left * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.left.normalized), 0.2f);
         }
         if (Input.GetKey("s"))
         {
             transform.position += Vector3.back * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.back.normalized), 0.2f);
         }
         if (Input.GetKey("d"))
         {
             transform.position += Vector3.right * movementSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.right), 0.2f);
         }
         if(Input.GetKeyDown("j"))
         {
@@ -85,7 +92,8 @@ public class PlayerController : MonoBehaviour
 
     void ResetWolf()
     {
-        GetComponent<Renderer>().material = baseMaterial;
+        //GetComponent<Renderer>().material = baseMaterial;
+        cloak.SetActive(false);
         matChange = false;
         duration = 20;
         if (followingSheep.Capacity != 0)
@@ -100,12 +108,14 @@ public class PlayerController : MonoBehaviour
     //Takes the picked up cloak and sets it to the current cloak of player
     void UseItem()
     {
-        if(pickedupMaterial != null)
+        if (!cloak.activeSelf)
+            cloak.SetActive(true);
+        if (pickedupMaterial != null)
         {
             duration = 20;
             Destroy(toUseCloak);
             pickedUpCloak = null;
-            GetComponent<Renderer>().material = pickedupMaterial;
+            costume.GetComponent<Renderer>().material = pickedupMaterial;
             startColor = pickedupMaterial.color;
             pickedupMaterial = null;
             matChange = true;
@@ -156,7 +166,8 @@ public class PlayerController : MonoBehaviour
             
             if(duration <= 0)
             {
-                GetComponent<Renderer>().material = baseMaterial;
+                cloak.SetActive(false);
+                costume.GetComponent<Renderer>().material = baseMaterial;
                 matChange = false;
                 duration = 20;
                 if(followingSheep.Capacity != 0)
@@ -177,28 +188,28 @@ public class PlayerController : MonoBehaviour
 
         if (duration < 15.0f && duration > 10.0f)
         {
-            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1.5f));
+            cloak.GetComponentInChildren<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1.5f));
         }
 
         if (duration < 10.0f && duration > 5.0f)
         {
-            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1f));
+            cloak.GetComponentInChildren<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 1f));
         }
         if (duration < 5.0f && duration > 0.0f)
         {
 
-            GetComponent<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 0.5f));
+            cloak.GetComponentInChildren<Renderer>().material.color = Color.Lerp(startColor, endColor, Mathf.PingPong(Time.time, 0.5f));
         }
     }
 
     void LureSheep()
     {
-        if(!GetComponent<Renderer>().material.name.Equals("Default-Material (Instance)"))
+        if(cloak.activeSelf)
         {
             foreach (GameObject sheep in GameObject.FindGameObjectsWithTag("Sheep"))
             {
                 //Debug.Log("Sheep Color is: " + sheep.GetComponent<Renderer>().materials[1].name);
-                if (this.GetComponent<Renderer>().material.name.Contains(sheep.GetComponent<Renderer>().materials[1].name))
+                if (costume.GetComponent<Renderer>().material.name.Contains(sheep.GetComponent<Renderer>().materials[1].name))
                 {
                     followingSheep.Add(sheep);
                     GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = true;
