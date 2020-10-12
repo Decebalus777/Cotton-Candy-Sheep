@@ -79,18 +79,24 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetKey("l"))
         {
-            GetComponent<Renderer>().material = baseMaterial;
-                matChange = false;
-                duration = 20;
-                if(followingSheep.Capacity != 0)
-                    foreach(GameObject sheep in followingSheep)
-                    {
-                        sheep.GetComponent<SheepController>().followingWolf = false;
-                    }
-            GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = false;
+            ResetWolf();
         }
     }
 
+    void ResetWolf()
+    {
+        GetComponent<Renderer>().material = baseMaterial;
+        matChange = false;
+        duration = 20;
+        if (followingSheep.Capacity != 0)
+        {
+            foreach (GameObject sheep in followingSheep)
+            {
+                sheep.GetComponent<SheepController>().followingWolf = false;
+            }
+        }
+        GameObject.FindGameObjectWithTag("BlackSheep").GetComponent<BlackSheepController>().followingWolf = false;
+    }
     //Takes the picked up cloak and sets it to the current cloak of player
     void UseItem()
     {
@@ -187,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
     void LureSheep()
     {
-        if(!GetComponent<Renderer>().material.name.Equals("Grey (Instance)"))
+        if(!GetComponent<Renderer>().material.name.Equals("Default-Material (Instance)"))
         {
             foreach (GameObject sheep in GameObject.FindGameObjectsWithTag("Sheep"))
             {

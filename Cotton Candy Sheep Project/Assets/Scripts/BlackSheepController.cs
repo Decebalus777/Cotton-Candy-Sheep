@@ -22,7 +22,7 @@ public class BlackSheepController : MonoBehaviour
     {
         var distWolf = Vector3.Distance(transform.position, wolf.position);
 
-        if (distWolf < wolfDistance && !captured)
+        if (distWolf < wolfDistance && !captured && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().matChange)
             RunFromWolf();
 
         if (followingWolf && !captured)
