@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float duration = 20;
     public GameObject cloak;
     public GameObject costume;
+    //public GameObject instr;
     public Material[] cloaks;
     public List<GameObject> followingSheep;
 
@@ -45,6 +46,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("Color of Wolf is: " + GetComponent<Renderer>().material.name);
         Movement();
         MaterialCountDown();
+        /*
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            Destroy(instr);
+        }*/
     }
 
     void FixedUpdate()
