@@ -41,7 +41,7 @@ public class Sheep : MonoBehaviour
         if (wolfDistance <= detectionRange * detectionRange)
         {
             // If the wolf is the same color, move towards it
-            if (wolfScript.matChange)// && wolf.GetComponent<Renderer>().material.color == GetComponent<Renderer>().material.color)
+            if (wolfScript.matChange)
             {
                 wolfOffset.y = 0;
                 transform.LookAt(wolf.transform);
